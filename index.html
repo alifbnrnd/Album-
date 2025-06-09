@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Album Kenangan</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .overlay {
+            background: rgba(0, 0, 0, 0.3);
+            min-height: 100vh;
+            padding: 20px 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 40px 0;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 300;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .gallery-container {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 100%;
+        }
+
+        .photo-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            aspect-ratio: 1;
+        }
+
+        .photo-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .photo-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .photo-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .photo-item:hover .photo-overlay {
+            transform: translateY(0);
+        }
+
+        .photo-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .photo-description {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .gallery-container {
+                padding: 25px;
+                border-radius: 15px;
+            }
+
+            .gallery {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 15px;
+            }
+
+            .photo-overlay {
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .gallery-container {
+                padding: 20px;
+            }
+        }
+
+        /* Loading animation */
+        .photo-item img {
+            opacity: 0;
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay">
+        <div class="container">
+            <header>
+                <h1>Album Kenangan</h1>
+                <p class="subtitle">Koleksi Momen Berharga</p>
+            </header>
+
+            <div class="gallery-container">
+                <div class="gallery">
+                    <!-- CARA 1: Ganti dengan URL gambar online baru -->
+                    <div class="photo-item">
+                        <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Pemandangan Alam">
+                        <div class="photo-overlay">
+                            <div class="photo-title">Pemandangan Alam</div>
+                            <div class="photo-description">Keindahan alam yang memukau</div>
+                        </div>
+                    </div>
+
+                    <!-- CARA 2: Ganti dengan file lokal -->
+                    <div class="photo-item">
+                        <img src="foto-keluarga.jpg" alt="Foto Keluarga">
+                        <div class="photo-overlay">
+                            <div class="photo-title">Foto Keluarga</div>
+                            <div class="photo-description">Momen kebersamaan keluarga</div>
+                        </div>
+                    </div>
+
+                    <!-- CARA 3: Ganti dengan gambar dari folder -->
+                    <div class="photo-item">
+                        <img src="images/liburan.jpg" alt="Foto Liburan">
+                        <div class="photo-overlay">
+                            <div class="photo-title">Liburan</div>
+                            <div class="photo-description">Kenangan indah liburan</div>
+                        </div>
+                    </div>
+
+                    <div class="photo-item">
+                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Danau Tenang">
+                        <div class="photo-overlay">
+                            <div class="photo-title">Danau Tenang</div>
+                            <div class="photo-description">Refleksi sempurna di air</div>
+                        </div>
+                    </div>
+
+                    <div class="photo-item">
+                        <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Gunung Berapi">
+                        <div class="photo-overlay">
+                            <div class="photo-title">Gunung Berapi</div>
+                            <div class="photo-description">Kekuatan alam yang menawan</div>
+                        </div>
+                    </div>
+
+                    <div class="photo-item">
+                        <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Padang Bunga">
+                        <div class="photo-overlay">
+                            <div class="photo-title">Padang Bunga</div>
+                            <div class="photo-description">Hamparan warna-warni alami</div>
+                        </div>
+                    </div>
+
+                    <div class="photo-item">
+                        <img src="https://images.unsplash.com/photo-1439066615861-d1af74d74000?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Danau di Pegunungan">
+                        <div class="photo-overlay">
+                            <div class="photo-title">Danau di Pegunungan</div>
+                            <div class="photo-description">Ketenangan yang menyejukkan</div>
+                        </div>
+                    </div>
+
+                    <div class="photo-item">
+                        <img src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Hutan Berkabut">
+                        <div class="photo-overlay">
+                            <div class="photo-title">Hutan Berkabut</div>
+                            <div class="photo-description">Misteri alam yang memukau</div>
+                        </div>
+                    </div>
+
+                    <div class="photo-item">
+                        <img src="https://images.unsplash.com/photo-1482192505345-5655af888989?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Air Terjun">
+                        <div class="photo-overlay">
+                            <div class="photo-title">Air Terjun</div>
+                            <div class="photo-description">Suara gemericik yang menenangkan</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Lazy loading effect for images
+        const images = document.querySelectorAll('.photo-item img');
+        
+        images.forEach((img, index) => {
+            img.style.animationDelay = `${index * 0.1}s`;
+        });
+
+        // Add smooth hover effect
+        const photoItems = document.querySelectorAll('.photo-item');
+        
+        photoItems.forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.zIndex = '10';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.zIndex = '1';
+            });
+        });
+    </script>
+</body>
+</html>
